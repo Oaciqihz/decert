@@ -6,10 +6,10 @@ export default function Home() {
 
 
     return (
-        <ConfigProvider>
-          <div className="App">
-            <Button type="primary">INDEX</Button>
-          </div>
-        </ConfigProvider>
+      <ConfigProvider>
+        <div className="App">
+          <Button type="primary">INDEX</Button>
+        </div>
+      </ConfigProvider>
     )
 }
