@@ -23,5 +23,5 @@ jobs:
       - name: Trigger request
         run: |
           for filename in $(cat added_files.txt); do
-            curl -X POST -H "Content-Type: application/json" -d '{"filename": "'"$filename"'"}' http://localhost:3000/api/endpoint
+            curl -X POST -H "Content-Type: application/json" -d '{"filename": "'"$filename"'"}' http://120.198.17.24:3001/api/endpoint
           done
