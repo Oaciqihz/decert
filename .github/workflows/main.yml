@@ -1,0 +1,34 @@
+# This is a basic workflow to help you get started with Actions
+
+name: translation
+
+# Controls when the workflow will run
+on: [push]
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    # 判断是否merge至main分支
+    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'master'
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # 获取代码
+      - name: Checkout code
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      # 获取修改文件路径
+      - name: Get added filenames
+        run: |
+          git diff --diff-filter=A --name-only ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }} > added_files.txt
+          cat added_files.txt
+
+      # 发送请求
+      - name: Trigger request
+        run: |
+          for filename in $(cat added_files.txt); do
+            curl -X POST -H "Content-Type: application/json" -d '{"filename": "'"$filename"'"}' http://localhost:3000/api/endpoint
+          done
