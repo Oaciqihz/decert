@@ -14,11 +14,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <h1>xxxxx</h1>
-        {children}
-      </body>
-    </html>
+    <div className="challenge">   
+      {children}
+    </div>
   )
 }

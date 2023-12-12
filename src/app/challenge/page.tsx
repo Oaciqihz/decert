@@ -3,6 +3,7 @@ import React from 'react';
 import { Button } from 'antd';
 import { BaseError } from 'viem'
 import { useAccount, useConnect, useDisconnect } from 'wagmi'
+import { useWeb3Modal } from '@web3modal/wagmi/react';
 
 export default function Page() {
 
@@ -10,6 +11,7 @@ export default function Page() {
     const { connect, connectors, error, isLoading, pendingConnector } =
       useConnect()
     const { disconnect } = useDisconnect()
+    const { open, close } = useWeb3Modal()
 
     return (
         <div>
@@ -28,6 +30,9 @@ export default function Page() {
                     {isLoading && x.id === pendingConnector?.id && ' (connecting)'}
                     </button>
                 ))}
+
+
+                <Button onClick={() => open({ view: 'Connect' })}>连接钱包</Button>
             </div>
 
             {error && <div>{(error as BaseError).shortMessage}</div>}
