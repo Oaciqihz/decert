@@ -22,13 +22,13 @@ jobs:
 
       # 获取修改文件路径
       - name: Get added filenames
-        run: |
+      - run: |
           git diff --diff-filter=A --name-only ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }} > added_files.txt
           cat added_files.txt
 
       # 发送请求
       - name: Trigger request
-        run: |
+      - run: |
           for filename in $(cat added_files.txt); do
             curl -X POST -H "Content-Type: application/json" -d '{"filename": "'"$filename"'"}' http://localhost:3000/api/endpoint
           done
