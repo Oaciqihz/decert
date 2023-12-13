@@ -1,9 +1,9 @@
 {
     "title": "Blockchain Security Practical Training Camp",
-    "description": "登链社区 和 BlockSec 联合推出的《区块链安全实战修炼营》课程配套挑战 test",
+    "description": "登链社区 和 BlockSec 联合推出的《区块链安全实战修炼营》课程配套挑战",
     "questions": [
         {
-            "title": "使用 create2 创建合约时，所创建合约的地址与哪些因素相关",
+            "title": "test",
             "options": [
                 " 发送交易者地址",
                 " nonce",
