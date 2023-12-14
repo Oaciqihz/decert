@@ -8,7 +8,11 @@ import "@/styles/globals.css"
 import React, { useEffect, useState } from 'react';
 import { Web3Modal } from './web3modal';
 import { Wagmi } from './wagmi';
+import { Layout } from 'antd';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
+const { Content } = Layout;
 const inter = Inter({ subsets: ['latin'] })
 
 // export const metadata: Metadata = {
@@ -23,6 +27,27 @@ export default function RootLayout({
 }) {
 
   const [isMobile, setIsMobile] = useState(false);
+
+  const PcChildern = () => {
+    return (
+      <Layout>
+        <Header />
+        <Content style={{minHeight: "100vh"}} >{children}</Content>
+        <Footer />
+      </Layout>
+    )
+  }
+
+  // TODO: 待完成
+  const MoblieChildern = () => {
+    return (
+      <Layout>
+        <Header />
+        <Content style={{minHeight: "100vh"}} >{children}</Content>
+        <Footer />
+      </Layout>
+    )
+  }
 
   useEffect(() => {
     function handleResize() {
@@ -48,13 +73,13 @@ export default function RootLayout({
           {isMobile ? (
             <Web3Modal>
               <StyledComponentsRegistry>
-                {children}
+                {MoblieChildern()}
               </StyledComponentsRegistry>
             </Web3Modal>
           ) : (
             <Wagmi>
               <StyledComponentsRegistry>
-                {children}
+                {PcChildern()}
               </StyledComponentsRegistry>
             </Wagmi>
           )}
