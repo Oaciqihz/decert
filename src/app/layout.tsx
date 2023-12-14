@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google'
 // import { Providers } from './wagmi';
 import StyledComponentsRegistry from '../lib/AntdRegistry';
 import "@/styles/globals.css"
+import "@/styles/globals.scss"
 import React, { useEffect, useState } from 'react';
 import { Web3Modal } from './web3modal';
 import { Wagmi } from './wagmi';

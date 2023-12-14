@@ -1,0 +1,37 @@
+#Header{
+    height: 82px;
+    padding-left: 150px;
+    padding-right: 130px;
+
+    line-height: normal;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255,255,255,0.5);
+    // backdrop-filter: blur(42px);
+
+    // 头部左侧栏
+    .navbar-links{
+        display: flex;
+        align-items: center;
+        gap: 73px;
+        a{
+            font-size: 17px;
+            font-weight: 400;
+            &:hover{
+                font-weight: bold;
+                color: #8F5A35;
+            }
+        }
+    }
+
+    // 头部右侧栏
+    .navbar-btns{
+        .btn-connect{
+            width: 160px;
+            height: 40px;
+            border-radius: 10px;
+            font-size: 17px;
+        }
+    }
+}
