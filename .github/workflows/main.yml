@@ -23,7 +23,7 @@ jobs:
           git diff --diff-filter=M --name-only ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }} | grep '^translation/' > modify_files.txt
           cat modify_files.txt
 
-      # 发送请求
+      # 发送请求测试
       - name: Trigger request
         run: |
           for filename in $(cat modify_files.txt); do
