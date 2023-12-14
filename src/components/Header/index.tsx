@@ -2,6 +2,8 @@ import { Button, Layout } from "antd";
 import "./index.scss";
 import Image from "next/image";
 import Link from "next/link";
+import { useContext } from "react";
+import PublicContext from "../Context/context";
 
 
 const { Header: AntdHeader } = Layout;
@@ -9,6 +11,7 @@ const { Header: AntdHeader } = Layout;
 
 export default function Header() {
     
+    const context = useContext(PublicContext);
 
     return (
         <AntdHeader id="Header">
@@ -33,7 +36,7 @@ export default function Header() {
             {/* 头部右侧栏 */}
             <div className="navbar-btns">
                 <Button
-                    // onClick={() => openModal()} 
+                    onClick={() => context?.showConnectModal()} 
                     className="btn-connect"
                     id='hover-btn-full'
                 >连接钱包</Button>

@@ -12,6 +12,7 @@ import { Wagmi } from './wagmi';
 import { Layout } from 'antd';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ContextProvider from '../components/Context';
 
 const { Content } = Layout;
 const inter = Inter({ subsets: ['latin'] })
@@ -26,14 +27,17 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-
+  
   const [isMobile, setIsMobile] = useState(false);
+
 
   const PcChildern = () => {
     return (
       <Layout>
         <Header />
-        <Content style={{minHeight: "100vh"}} >{children}</Content>
+        <Content style={{minHeight: "100vh"}} >
+          {children}
+        </Content>
         <Footer />
       </Layout>
     )
@@ -50,6 +54,7 @@ export default function RootLayout({
     )
   }
 
+  // 移动端样式检测
   useEffect(() => {
     function handleResize() {
       if (window.innerWidth < 768) {
@@ -73,15 +78,19 @@ export default function RootLayout({
         <div>
           {isMobile ? (
             <Web3Modal>
-              <StyledComponentsRegistry>
-                {MoblieChildern()}
-              </StyledComponentsRegistry>
+              <ContextProvider>
+                <StyledComponentsRegistry>
+                  {MoblieChildern()}
+                </StyledComponentsRegistry>
+              </ContextProvider>
             </Web3Modal>
           ) : (
             <Wagmi>
-              <StyledComponentsRegistry>
-                {PcChildern()}
-              </StyledComponentsRegistry>
+              <ContextProvider>
+                <StyledComponentsRegistry>
+                    {PcChildern()}
+                </StyledComponentsRegistry>
+              </ContextProvider>
             </Wagmi>
           )}
         </div>
