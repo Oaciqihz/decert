@@ -20,7 +20,7 @@ jobs:
       # 获取修改文件路径
       - name: Get modify filenames
         run: |
-          git diff --diff-filter=M --name-only ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }} | grep '^translation/' > modify_files.txt
+          git diff --diff-filter=AM --name-only ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }} | grep '^translation/' > modify_files.txt
           cat modify_files.txt
 
       # 发送请求
