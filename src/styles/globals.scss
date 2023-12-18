@@ -1,3 +1,21 @@
+// 设备展示
+
+// 中等屏幕
+.md-block{
+    display: none;
+    @media (min-width: 768px) {
+        display: block;
+    }
+}
+.md-hidden{
+    display: block;
+    @media (min-width: 768px) {
+        display: none;
+    }
+}
+
+
+
 
 // btn
 #hover-btn-full{
