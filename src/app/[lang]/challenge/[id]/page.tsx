@@ -1,6 +1,6 @@
-// 'use client'
-import dynamic from "next/dynamic";
 import React from 'react';
+
+export const dynamic = 'force-dynamic'
 
 export async function generateStaticParams() {
     return [{ id: '10475' }, { id: '10474' }]
@@ -13,7 +13,7 @@ async function getQuest(id: string) {
     return quest
 }
 
-async function Page({
+export default async function Page({
     params: { id }
 }: {
     params: { id: string }
@@ -31,5 +31,3 @@ async function Page({
         </div>
     )
 }
-
-export default dynamic (() => Promise.resolve(Page), {ssr: false})

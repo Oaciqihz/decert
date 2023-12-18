@@ -1,8 +1,6 @@
-import dynamic from "next/dynamic";
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -20,7 +18,7 @@ async function getQuest(id: string) {
   return quest
 }
 
-async function Layout({
+export default async function Layout({
   children, params: { id }
 }: {
   children: React.ReactNode, params: { id: string }
@@ -35,6 +33,3 @@ async function Layout({
     </div>
   )
 }
-
-export default dynamic (() => Promise.resolve(Layout), {ssr: false})
-

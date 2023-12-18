@@ -1,6 +1,6 @@
 import { Layout } from "antd";
-import "./index.scss";
 import Image from "next/image";
+import "./index.scss";
 
 
 const { Footer: AntdFooter } = Layout;
