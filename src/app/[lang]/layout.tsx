@@ -3,7 +3,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 // import { Providers } from './wagmi';
-import StyledComponentsRegistry from '../lib/AntdRegistry';
+import StyledComponentsRegistry from '../../lib/AntdRegistry';
 import "@/styles/globals.css"
 import "@/styles/globals.scss"
 import React, { useEffect, useState } from 'react';
@@ -12,7 +12,7 @@ import { Wagmi } from './wagmi';
 import { Layout } from 'antd';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import ContextProvider from '../components/Context';
+import ContextProvider from '../../components/Context';
 
 const { Content } = Layout;
 const inter = Inter({ subsets: ['latin'] })

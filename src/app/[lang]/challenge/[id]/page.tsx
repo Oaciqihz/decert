@@ -1,4 +1,5 @@
 // 'use client'
+import dynamic from "next/dynamic";
 import React from 'react';
 
 export async function generateStaticParams() {
@@ -12,7 +13,7 @@ async function getQuest(id: string) {
     return quest
 }
 
-export default async function Page({
+async function Page({
     params: { id }
 }: {
     params: { id: string }
@@ -30,3 +31,5 @@ export default async function Page({
         </div>
     )
 }
+
+export default dynamic (() => Promise.resolve(Page), {ssr: false})

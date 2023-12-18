@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 
@@ -19,7 +20,7 @@ async function getQuest(id: string) {
   return quest
 }
 
-export default async function Layout({
+async function Layout({
   children, params: { id }
 }: {
   children: React.ReactNode, params: { id: string }
@@ -34,3 +35,6 @@ export default async function Layout({
     </div>
   )
 }
+
+export default dynamic (() => Promise.resolve(Layout), {ssr: false})
+
