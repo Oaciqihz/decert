@@ -1,6 +1,7 @@
+'use client'
 import { createContext } from "react";
 
-const PublicContext = createContext<{ showConnectModal: () => void } | null>(null);
+const PublicContext = createContext<{ showConnectModal: () => void, isMobile: boolean } | null>(null);
 
 
 export default PublicContext;
